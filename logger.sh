@@ -78,7 +78,7 @@ confirmDeleteLast()
 
   case $CONFIRM in
     Y) deleteLast;;
-    n|*) 
+    n|*)
       echo ""
       echo "No line deleted"
       ;;
@@ -109,7 +109,7 @@ check_log_file()
   if [ ! -r $LOG_PATH ]; then
     echo "$app: Log file is not readable"
     exit 1
-  fi 
+  fi
 }
 
 search_log()
@@ -136,7 +136,7 @@ LOG_TYPE=${LOG_TYPE:-''}
 LOG_DISPLAY_COUNT=${LOG_DISPLAY_COUNT:-10}
 LOG_PROJ=${LOG_PROJ:-''}
 
-now=`date '+%d/%m/%y %H:%M'`
+now=`date '+%F %T'`
 app="Log"
 
 # process options
@@ -196,7 +196,7 @@ if [ ! -z "$1" ]; then
   fi
 
   #add text to file
-  echo "$now - $category$*" >> "$LOG_PATH" 
+  echo "$now - $category$*" >> "$LOG_PATH"
   #output that the event was logged
   echo "$app: $* logged$ltype$proj"
 else
@@ -216,3 +216,4 @@ else
     tail -n $LOG_DISPLAY_COUNT $LOG_PATH
   fi
 fi
+
